@@ -1,0 +1,2 @@
+Olá, meu nome é Guilherme Teodoro de Oliveira e esse é um texto para o exercício 7 da aula 01 de introdução a compiladores
+Fazer um código em C que conte o número de linhas desse arquivo.
