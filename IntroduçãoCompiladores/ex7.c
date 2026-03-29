@@ -1,6 +1,3 @@
-/* Implemente um programa em C que leia o conteúdo de um arquivo texto e contabilize a quantidade de linhas que há nele. 
-Ao final, o programa deve imprimir na tela a quantidade total de linhas do arquivo.*/
-
 #include <stdio.h>
 
 int main(){
@@ -8,7 +5,7 @@ int main(){
     FILE *arquivo = fopen("ex7.txt", "r");
 
     int num_linhas = 1;
-    int c = 0;
+    int c;
 
     if (arquivo == NULL){
         printf("Erro na importação do arquivo");
