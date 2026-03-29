@@ -1,3 +1,6 @@
+/* Implemente um programa em C que leia o conteúdo de um arquivo texto e contabilize a quantidade de linhas que há nele. 
+Ao final, o programa deve imprimir na tela a quantidade total de linhas do arquivo.*/
+
 #include <stdio.h>
 
 int main(){

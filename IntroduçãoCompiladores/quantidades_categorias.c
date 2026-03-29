@@ -1,3 +1,8 @@
+/* Crie um programa na linguagem C capaz de ler um arquivo texto contendo código fonte também escrito em C, 
+contando o quantidade de ocorrências das: letras maiúsculas (A...Z), letras minúsculas (a..z), dígitos (0...9) e espaços em branco.
+Ao final, o programa deve apresentar as quantidades em cada categoria na tela. Obs: Não é necessário contar caracteres 
+especiais ou acentuados. Caso não haja qualquer ocorrência de um determinado grupo, não é necessário imprimir a quantidade 0.*/
+
 #include <stdio.h>
 
 int main(){

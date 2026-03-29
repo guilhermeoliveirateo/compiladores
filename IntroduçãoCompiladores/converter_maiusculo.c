@@ -1,3 +1,6 @@
+/* Codifique um programa (em C) que leia um código fonte em C e apresente o seu conteúdo na tela, porém
+modificando todas as palavras reservadas da linguagem para maiúsculo.*/
+
 #include <stdio.h>
 #include <string.h>
 
