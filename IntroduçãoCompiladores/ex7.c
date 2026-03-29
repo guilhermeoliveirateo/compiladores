@@ -14,7 +14,7 @@ int main(){
 
     while ((c = fgetc(arquivo)) != EOF){
         if (c == '\n'){
-            num_linhas += 1;
+            num_linhas++;
         }
     }
 
