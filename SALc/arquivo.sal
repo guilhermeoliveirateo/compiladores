@@ -1,0 +1,166 @@
+@{ ============================================================
+   Programa de teste abrangente da linguagem SAL
+   Exercita: tipos, variáveis, vetores, sub-rotinas,
+   comandos de E/S, decisão, repetição e operadores.
+   ============================================================ }@
+
+module TesteSAL;
+
+globals
+    resultado : int;
+    flag : bool;
+
+@{ --- Sub-rotinas auxiliares --- }@
+
+@ Função: soma dois inteiros
+fn soma(a: int, b: int): int
+start
+    ret a + b;
+end
+
+@ Função: fatorial iterativo
+fn fatorial(n: int): int
+locals
+    i, fat : int;
+start
+    fat := 1;
+    for i := 1 to n do
+        fat := fat * i;
+    ret fat;
+end
+
+@ Função: verifica se um número é par
+fn ehPar(x: int): bool
+start
+    ret x - (x / 2) * 2 = 0;
+end
+
+@ Procedimento: classifica um número via match
+proc classificar(cod: int)
+start
+    match (cod)
+        when 0       => print("Zero");
+        when 1, 2, 3 => print("Baixo (1 a 3)");
+        when 4..7    => print("Medio (4 a 7)");
+        when 8, 9    => print("Alto (8 ou 9)");
+        otherwise    => print("Fora da faixa");
+    end;
+end
+
+@{ --- Programa principal --- }@
+
+proc main()
+locals
+    x, y, i, total : int;
+    continua : bool;
+    letra : char;
+    notas[5] : int;
+start
+    @ === Teste 1: saída básica ===
+    print("=== Teste 1: Print basico ===");
+    print("Ola mundo SAL!");
+
+    @ === Teste 2: entrada e saída ===
+    print("=== Teste 2: Scan e Print ===");
+    print("Digite dois inteiros:");
+    scan(x);
+    scan(y);
+    print("Voce digitou:", x, " e ", y);
+
+    @ === Teste 3: operadores aritméticos ===
+    print("=== Teste 3: Aritmetica ===");
+    resultado := soma(x, y);
+    print("Soma: ", resultado);
+    print("Diferenca: ", x - y);
+    print("Produto: ", x * y);
+    if (y <> 0)
+        print("Divisao inteira: ", x / y)
+    else
+        print("Divisao por zero nao permitida");
+
+    @ === Teste 4: operadores relacionais e lógicos ===
+    print("=== Teste 4: Relacionais e Logicos ===");
+    flag := x > y;
+    if (x > y ^ x > 0)
+        print("x eh maior que y e positivo")
+    else if (x = y)
+        print("x e y sao iguais")
+    else
+        print("x nao eh maior que y ou nao eh positivo");
+
+    if (x < 0 v y < 0)
+        print("Pelo menos um valor eh negativo")
+    else
+        print("Ambos nao-negativos");
+
+    print("Negacao de true: ", ~true);
+
+    @ === Teste 5: fatorial com função ===
+    print("=== Teste 5: Fatorial ===");
+    print("Fatorial de 5: ", fatorial(5));
+    print("Fatorial de 0: ", fatorial(0));
+
+    @ === Teste 6: for com step ===
+    print("=== Teste 6: For com step ===");
+    print("Contagem de 0 a 10, passo 2:");
+    for i := 0 to 10 step 2 do
+        print(i, " ");
+
+    @ === Teste 7: loop while ===
+    print("=== Teste 7: Loop While ===");
+    total := 0;
+    i := 1;
+    loop while (i <= 5)
+        start
+            total := total + i;
+            i := i + 1;
+        end;
+    print("Soma de 1 a 5: ", total);
+
+    @ === Teste 8: loop until ===
+    print("=== Teste 8: Loop Until ===");
+    i := 10;
+    loop
+        print(i, " ");
+        i := i - 1;
+    until (i < 1);
+    print("Contagem regressiva concluida!");
+
+    @ === Teste 9: vetores ===
+    print("=== Teste 9: Vetores ===");
+    notas[1] := 70;
+    notas[2] := 85;
+    notas[3] := 90;
+    notas[4] := 60;
+    notas[5] := 100;
+    total := 0;
+    for i := 1 to 5 do
+        total := total + notas[i];
+    print("Media das notas: ", total / 5);
+
+    @ === Teste 10: match ===
+    print("=== Teste 10: Match ===");
+    print("Digite um codigo (0 a 10):");
+    scan(x);
+    classificar(x);
+
+    @ === Teste 11: par ou ímpar com função bool ===
+    print("=== Teste 11: Par/Impar ===");
+    if (ehPar(x))
+        print(x, " eh par")
+    else
+        print(x, " eh impar");
+
+    @ === Teste 12: char ===
+    print("=== Teste 12: Caractere ===");
+    letra := 'A';
+    print("Caractere armazenado: ", letra);
+
+    @ === Teste 13: bloco vazio (válido) ===
+    print("=== Teste 13: Bloco vazio ===");
+    start
+    end;
+    print("Bloco vazio executado sem erro.");
+
+    print("=== Todos os testes concluidos! ===");
+end
